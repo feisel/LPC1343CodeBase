@@ -42,7 +42,7 @@
 
 #include "core/gpio/gpio.h"
 #include "core/systick/systick.h"
-#include "drivers/rfm12/rf12.h"
+#include "drivers/rf/rfm12/rf12.h"
 #include "drivers/sensors/lm75b/lm75b.h"
 
 #include "drivers/sensors/hyt371/hyt371.h"

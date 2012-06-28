@@ -315,6 +315,9 @@
             <file file_name="../../drivers/rf/pn532/pn532_bus_i2c.c"/>
             <file file_name="../../drivers/rf/pn532/pn532_bus_uart.c"/>
           </folder>
+          <folder Name="rfm12">
+            <file file_name="../../drivers/rf/rfm12/rf12.c"/>
+          </folder>
         </folder>
         <folder Name="storage">
           <folder Name="eeprom">
@@ -337,9 +340,6 @@
           <folder Name="tea5767">
             <file file_name="../../drivers/audio/tea5767/tea5767.c"/>
           </folder>
-        </folder>
-        <folder Name="rfm12">
-          <file file_name="../../drivers/rfm12/rf12.c"/>
         </folder>
       </folder>
       <file file_name="../../sysinit.c"/>
