@@ -42,11 +42,38 @@
 
 #include "core/gpio/gpio.h"
 #include "core/systick/systick.h"
+#include "drivers/rfm12/rf12.h"
+#include "drivers/sensors/lm75b/lm75b.h"
+
+#include "drivers/sensors/hyt371/hyt371.h"
 
 #ifdef CFG_INTERFACE
   #include "core/cmd/cmd.h"
 #endif
 
+#define RF12FREQ(freq)	((freq-430.0)/0.0025)
+void InitRFM12()
+{
+	SPIInit();
+
+	rf12_init();					// ein paar Register setzen (z.B. CLK auf 10MHz)
+	rf12_setfreq(RF12FREQ(433.92));	// Sende/Empfangsfrequenz auf 433,92MHz einstellen
+	rf12_setbandwidth(4, 1, 4);		// 200kHz Bandbreite, -6dB Verstärkung, DRSSI threshold: -79dBm
+	rf12_setbaud(1000);			// 19200 baud
+	rf12_setpower(0, 6);			// 1mW Ausgangangsleistung, 120kHz Frequenzshift
+
+}
+
+
+void prepareSleepMode()
+{
+//LPC_IOCON->PIO2_0 &=~  ((1<<3) | (1<<4));
+		//LPC_IOCON->PIO2_1 &=~  ((1<<3) | (1<<4));
+		//LPC_IOCON->PIO2_2 &=~  ((1<<3) | (1<<4));
+		//LPC_IOCON->PIO2_3 &=~  ((1<<3) | (1<<4));
+		GPIO_GPIO2DIR|=((0<<1) |(1<<1) | (2<<1) | (3<<1) );
+		GPIO_GPIO2DATA|=((0<<1) |(1<<1) | (2<<1) | (3<<1) );
+}
 /**************************************************************************/
 /*! 
     Main program entry point.  After reset, normal code execution will
@@ -55,27 +82,69 @@
 /**************************************************************************/
 int main(void)
 {
-  // Configure cpu and mandatory peripherals
-  systemInit();
+  //CPU Init
+  cpuInit();
+  systickInit(10);
 
-  uint32_t currentSecond, lastSecond;
-  currentSecond = lastSecond = 0;
-  
-  while (1)
-  {
-    // Toggle LED once per second
-    currentSecond = systickGetSecondsActive();
-    if (currentSecond != lastSecond)
+  //Declare Vars
+  uint32_t pmuRegVal;
+ 
+
+  //Geräte initieren
+  InitRFM12();
+  lm75bInit();
+
+
+
+
+    // Inidicate which peripherals should be disabled in deep-sleep
+    pmuRegVal = SCB_PDSLEEPCFG_IRCOUT_PD | 
+                SCB_PDSLEEPCFG_IRC_PD | 
+                SCB_PDSLEEPCFG_FLASH_PD | 
+                SCB_PDSLEEPCFG_USBPLL_PD | 
+                SCB_PDSLEEPCFG_SYSPLL_PD | 
+                SCB_PDSLEEPCFG_SYSOSC_PD | 
+                SCB_PDSLEEPCFG_ADC_PD | 
+                SCB_PDSLEEPCFG_BOD_PD;// |
+             //    SCB_PDSLEEPCFG_USBPAD_PD |
+               //   SCB_PDSLEEPCFG_WDTOSC_PD;
+
+    while(1)
     {
-      lastSecond = currentSecond;
-      gpioSetValue(CFG_LED_PORT, CFG_LED_PIN, lastSecond % 2);
+
+      //Temperatur ermitteln
+    //  lm75bInit();
+       int32_t temperature = 0;
+      lm75bGetTemperature(&temperature);
+
+    //Temperatur umwandeln
+    temperature *= 125;
+
+
+
+    //Int in Char Array umwandeln
+    char Buffer[20];
+    itoa( temperature, Buffer, 10 );
+
+   //Daten versenden
+    rf12_txdata(Buffer,5);
+
+    //Vor dem schlafen muss das rfm12 auf low Battery gesetzt werden
+     rf12_trans(0x8201);
+ //    prepareSleepMode();
+   
+      
+       
+       //systickDelay(200);
+     //sleep aktiv setzen
+      pmuInit();
+      pmuDeepSleep(pmuRegVal, 10);
+   
+    
+      
+   
+     
+
     }
-
-    // Poll for CLI input if CFG_INTERFACE is enabled in projectconfig.h
-    #ifdef CFG_INTERFACE 
-      cmdPoll(); 
-    #endif
-  }
-
-  return 0;
+    return 0;
 }

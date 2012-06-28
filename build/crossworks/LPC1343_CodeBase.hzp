@@ -127,6 +127,10 @@
           <folder Name="ina219">
             <file file_name="../../drivers/sensors/ina219/ina219.c"/>
           </folder>
+          <folder Name="hyt371">
+            <file file_name="../../drivers/sensors/hyt371/hyt371.c"/>
+            <file file_name="../../drivers/sensors/hyt371/hyt371.h"/>
+          </folder>
         </folder>
         <folder Name="displays" file_name="">
           <folder Name="bitmap">
