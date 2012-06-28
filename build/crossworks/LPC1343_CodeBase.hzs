@@ -2,8 +2,7 @@
 <session>
  <Bookmarks/>
  <Breakpoints>
-  <BreakpointListItem line="184" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="4" counter="0" isFunctionBreakpoint="false" filename="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\drivers\sensors\adbm-a350\adbm-a350.c" expression="" />
-  <BreakpointListItem line="77" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="4" counter="0" isFunctionBreakpoint="false" filename="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" expression="" />
+  <BreakpointListItem line="184" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="2" counter="0" isFunctionBreakpoint="false" filename="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\drivers\sensors\adbm-a350\adbm-a350.c" expression="" />
  </Breakpoints>
  <ETMWindow>
   <ETMRegister number="0" value="800" />
@@ -27,9 +26,6 @@
   <ProjectSessionItem path="LPC1343_CodeBase" name="unnamed" />
   <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase" name="unnamed" />
   <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files" name="unnamed" />
-  <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files;drivers" name="unnamed" />
-  <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files;drivers;sensors" name="unnamed" />
-  <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files;drivers;sensors;lm75b" name="unnamed" />
  </Project>
  <Register1>
   <RegisterWindow openNodes="GPIO1" binaryNodes="" hiddenNodes="" unsignedNodes="" visibleGroups="CPU;CoreDebug;GPIO2;GPIO1" decimalNodes="" octalNodes="" asciiNodes="" />
@@ -49,10 +45,10 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Each Second" >
-   <Watchpoint linenumber="66" radix="10" name="msTicks" expression="msTicks" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/systick/systick.c" />
-   <Watchpoint linenumber="138" radix="16" name="timer32_0_counter" expression="timer32_0_counter" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/timer32/timer32.c" />
-   <Watchpoint linenumber="155" radix="-1" name="xTickCount" expression="xTickCount" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
    <Watchpoint linenumber="155" radix="16" name="Tick" expression="Tick" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
+   <Watchpoint linenumber="155" radix="-1" name="xTickCount" expression="xTickCount" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
+   <Watchpoint linenumber="138" radix="16" name="timer32_0_counter" expression="timer32_0_counter" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/timer32/timer32.c" />
+   <Watchpoint linenumber="66" radix="10" name="msTicks" expression="msTicks" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/systick/systick.c" />
   </Watches>
  </Watch1>
  <Watch2>
@@ -65,15 +61,7 @@
   <Watches active="0" update="Never" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="16" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" y="137" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" left="0" selected="1" name="unnamed" top="105" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\sysinit.c" y="130" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\sysinit.c" left="0" selected="0" name="unnamed" top="111" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cpu\cpu.c" y="178" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cpu\cpu.c" left="0" selected="0" name="unnamed" top="154" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\gpio\gpio.c" y="179" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\gpio\gpio.c" left="0" selected="0" name="unnamed" top="156" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="22" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rfm12\rf12.c" y="166" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rfm12\rf12.c" left="0" selected="0" name="unnamed" top="135" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rfm12\rf12.h" y="24" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rfm12\rf12.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\lpc134x.h" y="1165" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\lpc134x.h" left="0" selected="0" name="unnamed" top="1156" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="18" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.c" y="201" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.c" left="0" selected="0" name="unnamed" top="162" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.h" y="70" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.h" left="0" selected="0" name="unnamed" top="42" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\main.c" y="8" path="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\main.c" left="0" selected="1" name="unnamed" top="0" />
  </Files>
- <ARMCrossStudioWindow activeProject="LPC1343_CodeBase" autoConnectTarget="SEGGER J-Link" debugSearchFileMap="" fileDialogInitialDirectory="C:\Users\feisele\workspace\Wetterstation_Sender\src" fileDialogDefaultFilter="*.c" autoConnectCapabilities="388991" debugSearchPath="" buildConfiguration="THUMB Flash Debug" />
+ <ARMCrossStudioWindow activeProject="LPC1343_CodeBase" autoConnectTarget="SEGGER J-Link" debugSearchFileMap="" fileDialogInitialDirectory="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\drivers\sensors\ina219" fileDialogDefaultFilter="" autoConnectCapabilities="388991" debugSearchPath="" buildConfiguration="THUMB Flash Release" />
 </session>
