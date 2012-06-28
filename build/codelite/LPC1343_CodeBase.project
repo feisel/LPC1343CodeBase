@@ -381,7 +381,12 @@
         <![CDATA[]]>
       </Environment>
       <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="2331" DebuggerPath="C:\yagarto\bin\arm-none-eabi-gdb.exe">
-        <PostConnectCommands/>
+        <PostConnectCommands>monitor reg r13 = (0x00000000)
+monitor reg pc = (0x00000004)
+
+break ResetHandler
+break main
+continue</PostConnectCommands>
         <StartupCommands># Make sure that we are using SWD
 monitor interface SWD
 
@@ -425,7 +430,7 @@ monitor reset</StartupCommands>
         <CustomPostBuild/>
         <CustomPreBuild/>
       </AdditionalRules>
-      <Completion>
+      <Completion EnableCpp11="no">
         <ClangCmpFlags/>
         <ClangPP/>
         <SearchPaths/>
@@ -461,7 +466,7 @@ monitor reset</StartupCommands>
         <CustomPostBuild/>
         <CustomPreBuild/>
       </AdditionalRules>
-      <Completion>
+      <Completion EnableCpp11="no">
         <ClangCmpFlags/>
         <ClangPP/>
         <SearchPaths/>

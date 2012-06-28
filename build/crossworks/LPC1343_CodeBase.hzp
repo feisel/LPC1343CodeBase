@@ -104,9 +104,7 @@
         <folder Name="pwm">
           <file file_name="../../core/pwm/pwm.c"/>
         </folder>
-        <folder Name="swspi">
-          <file file_name="../../core/swspi/swspi.c"/>
-        </folder>
+        <folder Name="swspi"/>
       </folder>
       <file file_name="../../lpc134x.h"/>
       <file file_name="../../projectconfig.h"/>
@@ -335,6 +333,9 @@
           <folder Name="tea5767">
             <file file_name="../../drivers/audio/tea5767/tea5767.c"/>
           </folder>
+        </folder>
+        <folder Name="rfm12">
+          <file file_name="../../drivers/rfm12/rf12.c"/>
         </folder>
       </folder>
       <file file_name="../../sysinit.c"/>
