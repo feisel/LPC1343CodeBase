@@ -9,6 +9,7 @@
 #include "LPC134x.h"
 //#include "common.h"
 #include "core/systick/systick.h"
+#include "core/iap/iap.h"
 
 
 
@@ -17,23 +18,6 @@ int static mosiPin=3;
 int static misoPin=2;
 int static sckPin=1;
 int static sselPin=0;
-
-
-volatile uint32_t msTicks;                            /* counts 1ms timeTicks */
-
-void SysTick_Handler(void) {
-  msTicks++;                        /* increment counter necessary in Delay() */
-}
-
-/*------------------------------------------------------------------------------
-  delays number of tick Systicks (happens every 1 ms)
- *------------------------------------------------------------------------------*/
- void Delay (uint32_t dlyTicks) {
-  uint32_t curTicks;
-
-  curTicks = msTicks;
-  while ((msTicks - curTicks) < dlyTicks);
-}
 
 
 void SPIInit(void){
@@ -185,3 +169,40 @@ void rf12_rxdata(unsigned char *data, unsigned char number)
 	}
 	rf12_trans(0x8208);			// RX off
 }
+
+
+uint8_t rf12_readDeviceId(void)
+{
+    IAP_return_t iap_return;
+    iap_return = iapReadSerialNumber();
+
+
+    return  iap_return.Result[0];
+}
+
+uint8_t packetId=0;
+//Sendet ein Packet
+ void rf12_SendPacket(RF12_Packet_T packet)
+ {
+     //packetId erhöhen
+     packetId++;
+     //deviceId auslesen
+     //TODO Read Device ID from IAP sometimes the mc hangs, why?
+     uint8_t deviceId = 0x01;
+      int packetLength=10;
+      unsigned char data[packetLength];
+
+      //Daten umverpacken
+      data[0] = deviceId;
+      data[1] = packetId;
+      data[2] = packet.CRC[0];
+      data[3] = packet.CRC[1];
+      data[4] = packet.DataLength;
+      data[5] = packet.Type;
+      data[6] = packet.Data[0];
+      data[7] = packet.Data[1];
+      data[8] = packet.Data[2];
+      data[9] = packet.Data[3];
+
+    rf12_txdata(data,packetLength);
+ }

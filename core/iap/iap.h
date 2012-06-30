@@ -57,4 +57,6 @@ typedef struct
 
 IAP_return_t iapReadSerialNumber(void);
 
+IAP_return_t iapReadControllerType(void);
+
 #endif

@@ -129,7 +129,6 @@
           </folder>
           <folder Name="hyt371">
             <file file_name="../../drivers/sensors/hyt371/hyt371.c"/>
-            <file file_name="../../drivers/sensors/hyt371/hyt371.h"/>
           </folder>
         </folder>
         <folder Name="displays" file_name="">
@@ -431,6 +430,7 @@
     </folder>
     <configuration Name="Release" arm_fp_abi="Soft" gcc_optimization_level="Optimize For Size"/>
     <configuration Name="Debug" build_remove_unused_symbols="Yes"/>
+    <configuration Name="THUMB Flash Debug" c_preprocessor_definitions="STARTUP_FROM_RESET "/>
   </project>
   <configuration Name="THUMB Flash Debug" inherited_configurations="THUMB;Flash;Debug"/>
   <configuration Name="THUMB" Platform="ARM" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>

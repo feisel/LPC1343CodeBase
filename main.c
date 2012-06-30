@@ -33,6 +33,9 @@
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**************************************************************************/
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -40,6 +43,7 @@
 #include "projectconfig.h"
 #include "sysinit.h"
 
+#include "core/iap/iap.h"
 #include "core/gpio/gpio.h"
 #include "core/systick/systick.h"
 #include "drivers/rf/rfm12/rf12.h"
@@ -65,15 +69,26 @@ void InitRFM12()
 }
 
 
-void prepareSleepMode()
+
+int main2(void)
 {
-//LPC_IOCON->PIO2_0 &=~  ((1<<3) | (1<<4));
-		//LPC_IOCON->PIO2_1 &=~  ((1<<3) | (1<<4));
-		//LPC_IOCON->PIO2_2 &=~  ((1<<3) | (1<<4));
-		//LPC_IOCON->PIO2_3 &=~  ((1<<3) | (1<<4));
-		GPIO_GPIO2DIR|=((0<<1) |(1<<1) | (2<<1) | (3<<1) );
-		GPIO_GPIO2DATA|=((0<<1) |(1<<1) | (2<<1) | (3<<1) );
+  systemInit();
+
+  InitRFM12();
+
+    char Buffer[20];
+ printf("Init Success");
+  while(1)
+  {
+  rf12_rxdata(Buffer,10);
+//  systickDelay(2000);
+ // printf("data:");
+
+  printf("data: %02x-%02x-%02x-%02x-%02x-%02x-%02x-%02x-%02x-%02x ;\n", Buffer[0], Buffer[1], Buffer[2], Buffer[3], Buffer[4]
+  ,Buffer[5], Buffer[6], Buffer[7], Buffer[8], Buffer[9]);
+  }
 }
+
 /**************************************************************************/
 /*! 
     Main program entry point.  After reset, normal code execution will
@@ -82,20 +97,26 @@ void prepareSleepMode()
 /**************************************************************************/
 int main(void)
 {
+systemInit();
   //CPU Init
-  cpuInit();
+ // cpuInit();
+// systemInit();
   systickInit(10);
 
   //Declare Vars
   uint32_t pmuRegVal;
  
 
+  systickDelay(20);
   //Geräte initieren
   InitRFM12();
-  lm75bInit();
+  yht371Init();
 
 
+  uint32_t temp;
+  uint32_t hum;
 
+ 
 
     // Inidicate which peripherals should be disabled in deep-sleep
     pmuRegVal = SCB_PDSLEEPCFG_IRCOUT_PD | 
@@ -105,46 +126,67 @@ int main(void)
                 SCB_PDSLEEPCFG_SYSPLL_PD | 
                 SCB_PDSLEEPCFG_SYSOSC_PD | 
                 SCB_PDSLEEPCFG_ADC_PD | 
-                SCB_PDSLEEPCFG_BOD_PD;// |
-             //    SCB_PDSLEEPCFG_USBPAD_PD |
-               //   SCB_PDSLEEPCFG_WDTOSC_PD;
+                SCB_PDSLEEPCFG_BOD_PD |//;// |
+                 SCB_PDSLEEPCFG_USBPAD_PD |
+                 SCB_PDSLEEPCFG_WDTOSC_PD;
 
     while(1)
     {
-
-      //Temperatur ermitteln
-    //  lm75bInit();
-       int32_t temperature = 0;
-      lm75bGetTemperature(&temperature);
-
-    //Temperatur umwandeln
-    temperature *= 125;
-
-
-
     //Int in Char Array umwandeln
     char Buffer[20];
-    itoa( temperature, Buffer, 10 );
-
-   //Daten versenden
-    rf12_txdata(Buffer,5);
-
-    //Vor dem schlafen muss das rfm12 auf low Battery gesetzt werden
-     rf12_trans(0x8201);
- //    prepareSleepMode();
    
+ //Feuchtesensor neu messen
+    hyt371DoMR();
+    systickDelay(20);
+    hyt371bRead(&hum,&temp);
+
+    //Feuchtigkeit umverpacken und senden
+    itoa( hum, Buffer, 10 );
+      //Daten versenden
+    //rf12_txdata(Buffer,5);
+
+   //Kurz warten
+    uint16_t status = rf12_trans(0x0);	
+    systickDelay(100);
       
+       status = rf12_trans(0x0);	
+
+
+
+       //Packet für Feuchte bauen und senden
+       RF12_Packet_T packet;
+       packet.DeviceId=1;
+       packet.PacketId=1;
+       packet.CRC[0]=1;
+       packet.CRC[1]=1;
+       packet.Type = RF12_PacketType_Hum;
+       packet.DataLength=1;
+       packet.Data[0]=hum;
+       rf12_SendPacket(packet);
+
        
-       //systickDelay(200);
+       //Packet für Temperatue bauen und senden
+       packet.DeviceId=1;
+       packet.PacketId=1;
+       packet.CRC[0]=1;
+       packet.CRC[1]=1;
+       packet.Type = RF12_PacketType_Temp;
+       packet.DataLength=1;
+       packet.Data[0]=temp;
+       packet.Data[1]=0;
+       packet.Data[2]=0;
+       packet.Data[3]=0;
+       rf12_SendPacket(packet);
+       
+
+       // RF12 ausschalten um strom zu sparen
+        rf12_trans(0x8201);
+
+
+     //  systickDelay(200);
      //sleep aktiv setzen
       pmuInit();
       pmuDeepSleep(pmuRegVal, 10);
-   
-    
-      
-   
-     
-
     }
     return 0;
 }

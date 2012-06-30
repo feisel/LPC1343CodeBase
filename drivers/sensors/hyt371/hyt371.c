@@ -27,6 +27,29 @@ hyt371Error_e yht371Init(void)
   
 }
 
+//sends a Measurement Requests to the sensor
+hyt371Error_e hyt371DoMR(void)
+{
+    // Clear write buffers
+  uint32_t i;
+  for ( i = 0; i < I2C_BUFSIZE; i++ )
+  {
+    I2CMasterBuffer[i] = 0x00;
+  }
+
+  I2CWriteLength = 2;
+  I2CReadLength = 0;
+
+
+  I2CMasterBuffer[0] = HYT371_ADDRESS; // I2C device address
+  I2CMasterBuffer[1] = 0x0;
+  I2CMasterBuffer[2] = HYT371_ADDRESS | HYT371_WRITEBIT;  
+
+   i2cEngine();
+
+   return HYT371_ERROR_OK;
+}
+
 hyt371Error_e hyt371bRead(int32_t *hum,int32_t *temp)
 {
   // Clear write buffers
@@ -36,11 +59,12 @@ hyt371Error_e hyt371bRead(int32_t *hum,int32_t *temp)
     I2CMasterBuffer[i] = 0x00;
   }
 
-  I2CWriteLength = 1;
+  I2CWriteLength = 2;
   I2CReadLength = 4;
-  I2CMasterBuffer[0] = HYT371_ADDRESS;             // I2C device address
-  // Append address w/read bit
-  I2CMasterBuffer[1] = HYT371_ADDRESS | HYT371_READBIT;  
+
+  I2CMasterBuffer[0] = HYT371_ADDRESS; // I2C device address
+  I2CMasterBuffer[1] = 0x0;
+  I2CMasterBuffer[2] = HYT371_ADDRESS | HYT371_READBIT;  
   i2cEngine();
 
   int32_t tempHum = 0;
@@ -51,19 +75,11 @@ hyt371Error_e hyt371bRead(int32_t *hum,int32_t *temp)
   int32_t tempTemp = 0;
    tempTemp = 0;
   tempTemp = ((I2CSlaveBuffer[2]<<8) | (I2CSlaveBuffer[3]));
-  tempTemp &= 0x3FFF;
-  tempTemp = (165 *tempTemp) / 16384;
+  tempTemp = tempTemp >> 2;   
+  tempTemp = (165 *tempTemp) / 16384 -40;
 
   *temp = tempTemp;
   *hum =tempHum;
 
-/*
-  //  Sign extend negative numbers
-  if (I2CSlaveBuffer[0] & 0x80)
-  {
-    // Negative number
-    *value |= 0xFFFFFC00;
-  }
-  */
   return HYT371_ERROR_OK;
 }

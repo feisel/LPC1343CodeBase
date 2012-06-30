@@ -55,3 +55,10 @@ IAP_return_t iapReadSerialNumber(void)
   return iap_return;
 }
 
+IAP_return_t iapReadControllerType(void)
+{
+  // ToDo: Why does IAP sometime cause the application to halt when read???
+  param_table[0] = IAP_CMD_READPARTID;
+  iap_entry(param_table,(uint32_t*)(&iap_return));
+  return iap_return;
+}

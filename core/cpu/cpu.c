@@ -155,7 +155,7 @@ void cpuPllSetup (cpuMultiplier_t multiplier)
 
   // Disable USB clock by default (enabled in USB code)
   SCB_PDRUNCFG |= (SCB_PDSLEEPCFG_USBPAD_PD); // Power-down USB PHY
-  SCB_PDRUNCFG |= (SCB_PDSLEEPCFG_USBPLL_PD); // Power-down USB PLL
+ SCB_PDRUNCFG |= (SCB_PDSLEEPCFG_USBPLL_PD); // Power-down USB PLL
 
   // Set system AHB clock
   SCB_SYSAHBCLKDIV = SCB_SYSAHBCLKDIV_DIV1;
