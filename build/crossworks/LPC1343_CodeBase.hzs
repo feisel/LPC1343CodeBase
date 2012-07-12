@@ -3,7 +3,7 @@
  <Bookmarks/>
  <Breakpoints>
   <BreakpointListItem line="184" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="4" counter="0" isFunctionBreakpoint="false" filename="C:\Dropbox\microBuilder\Code\LPC1343\LPC1343_CodeBase_GIT\drivers\sensors\adbm-a350\adbm-a350.c" expression="" />
-  <BreakpointListItem line="176" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="4" counter="0" isFunctionBreakpoint="false" filename="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.c" expression="" />
+  <BreakpointListItem line="149" action="" hardwareBreakpoint="" trigger="" useHWbreakpoint="false" group="Breakpoints" type="Breakpoint" state="2" counter="0" isFunctionBreakpoint="false" filename="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" expression="" />
  </Breakpoints>
  <ETMWindow>
   <ETMRegister number="0" value="800" />
@@ -27,8 +27,6 @@
   <ProjectSessionItem path="LPC1343_CodeBase" name="unnamed" />
   <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase" name="unnamed" />
   <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files" name="unnamed" />
-  <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files;core" name="unnamed" />
-  <ProjectSessionItem path="LPC1343_CodeBase;LPC1343_CodeBase;Source Files;core;usbcdc" name="unnamed" />
  </Project>
  <Register1>
   <RegisterWindow openNodes="GPIO1" binaryNodes="" hiddenNodes="" unsignedNodes="" visibleGroups="CPU;CoreDebug;GPIO2;GPIO1" decimalNodes="" octalNodes="" asciiNodes="" />
@@ -48,10 +46,10 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Each Second" >
-   <Watchpoint linenumber="155" radix="16" name="Tick" expression="Tick" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
-   <Watchpoint linenumber="155" radix="-1" name="xTickCount" expression="xTickCount" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
-   <Watchpoint linenumber="138" radix="16" name="timer32_0_counter" expression="timer32_0_counter" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/timer32/timer32.c" />
    <Watchpoint linenumber="66" radix="10" name="msTicks" expression="msTicks" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/systick/systick.c" />
+   <Watchpoint linenumber="138" radix="16" name="timer32_0_counter" expression="timer32_0_counter" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/core/timer32/timer32.c" />
+   <Watchpoint linenumber="155" radix="-1" name="xTickCount" expression="xTickCount" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
+   <Watchpoint linenumber="155" radix="16" name="Tick" expression="Tick" filename="c:/documents and settings/kevin/my documents/my dropbox/microbuilder/code/lpc1343/lpc1343_codebase/freertos/tasks.c" />
   </Watches>
  </Watch1>
  <Watch2>
@@ -64,19 +62,23 @@
   <Watches active="0" update="Never" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="76" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" y="91" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" left="0" selected="0" name="unnamed" top="61" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" y="188" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\main.c" left="0" selected="0" name="unnamed" top="170" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\i2c\i2c.c" y="27" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\i2c\i2c.c" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\hyt371\hyt371.c" y="77" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\hyt371\hyt371.c" left="0" selected="0" name="unnamed" top="18" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.c" y="182" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.c" left="0" selected="0" name="unnamed" top="160" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.c" y="30" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.c" left="0" selected="0" name="unnamed" top="42" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\systick\systick.c" y="212" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\systick\systick.c" left="0" selected="0" name="unnamed" top="188" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\pmu\pmu.c" y="348" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\pmu\pmu.c" left="0" selected="0" name="unnamed" top="336" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.h" y="18" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.h" left="0" selected="0" name="unnamed" top="12" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.h" y="20" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12\rf12.h" left="0" selected="0" name="unnamed" top="6" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\iap\iap.h" y="60" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\iap\iap.h" left="0" selected="0" name="unnamed" top="33" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\hyt371\hyt371.h" y="12" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\hyt371\hyt371.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="27" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\projectconfig.h" y="648" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\projectconfig.h" left="0" selected="0" name="unnamed" top="611" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="18" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\usbcore.c" y="35" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\usbcore.c" left="0" selected="0" name="unnamed" top="6" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="49" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\projectconfig.h" y="353" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\projectconfig.h" left="0" selected="1" name="unnamed" top="349" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\users\feisele\documents\github\lpc1343codebase\build\crossworks\thumb flash debug\thumb_crt0.o" y="0" path="C:\users\feisele\documents\github\lpc1343codebase\build\crossworks\thumb flash debug\thumb_crt0.o" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\cdc.h" y="25" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\cdc.h" left="0" selected="1" name="unnamed" top="4" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\cdc.h" y="25" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\usbcdc\cdc.h" left="0" selected="0" name="unnamed" top="4" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cmd\cmd.c" y="307" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cmd\cmd.c" left="0" selected="0" name="unnamed" top="286" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\AppData\Local\Rowley Associates Limited\CrossWorks for ARM\packages\targets\LPC1000\include\CMSIS\system_LPC13xx.c" y="141" path="C:\Users\feisele\AppData\Local\Rowley Associates Limited\CrossWorks for ARM\packages\targets\LPC1000\include\CMSIS\system_LPC13xx.c" left="0" selected="0" name="unnamed" top="123" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cpu\cpu.c" y="159" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\core\cpu\cpu.c" left="0" selected="0" name="unnamed" top="129" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\lpc134x.h" y="431" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\lpc134x.h" left="0" selected="0" name="unnamed" top="412" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.c" y="153" path="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\sensors\lm75b\lm75b.c" left="0" selected="0" name="unnamed" top="135" />
  </Files>
  <ARMCrossStudioWindow activeProject="LPC1343_CodeBase" autoConnectTarget="SEGGER J-Link" debugSearchFileMap="" fileDialogInitialDirectory="C:\Users\feisele\Documents\GitHub\LPC1343CodeBase\drivers\rf\rfm12" fileDialogDefaultFilter="*.c" autoConnectCapabilities="388991" debugSearchPath="" buildConfiguration="THUMB Flash Debug" />
 </session>
