@@ -630,7 +630,7 @@
 
     #ifdef CFG_BRD_LPC1343_REFDESIGN_MINIMAL
       // #define CFG_USBHID
-       #define CFG_USBCDC
+    //   #define CFG_USBCDC
       #define CFG_USBCDC_BAUDRATE         (115200)
       #define CFG_USBCDC_INITTIMEOUT      (5000)
       #define CFG_USBCDC_BUFFERSIZE       (256)
@@ -702,8 +702,8 @@
 
     #ifdef CFG_BRD_LPC1343_REFDESIGN_MINIMAL
       #define CFG_PRINTF_MAXSTRINGSIZE    (255)
-   //   #define CFG_PRINTF_UART
-       #define CFG_PRINTF_USBCDC
+      #define CFG_PRINTF_UART
+   //    #define CFG_PRINTF_USBCDC
       #define CFG_PRINTF_NEWLINE          "\r\n"
     #endif
 

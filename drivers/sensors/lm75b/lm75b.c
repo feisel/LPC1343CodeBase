@@ -164,7 +164,8 @@ lm75bError_e lm75bInit(void)
   return LM75B_ERROR_OK;
   
   // Set device to shutdown mode by default (saves power)
-  return lm75bConfigWrite (LM75B_CONFIG_SHUTDOWN_SHUTDOWN);
+//  return lm75bConfigWrite (LM75B_CONFIG_SHUTDOWN_SHUTDOWN);
+return LM75B_ERROR_OK;
 }
 
 /**************************************************************************/
@@ -183,14 +184,14 @@ lm75bError_e lm75bGetTemperature (int32_t *temp)
   if (!_lm75bInitialised) lm75bInit();
 
   // Turn device on
-  lm75bConfigWrite (LM75B_CONFIG_SHUTDOWN_POWERON);
+  //m75bConfigWrite (LM75B_CONFIG_SHUTDOWN_POWERON);
 
   // Read temperature
   lm75bError_e error = LM75B_ERROR_OK;
   error = lm75bRead16 (LM75B_REGISTER_TEMPERATURE, temp);
 
   // Shut device back down
-  lm75bConfigWrite (LM75B_CONFIG_SHUTDOWN_SHUTDOWN);
+ // lm75bConfigWrite (LM75B_CONFIG_SHUTDOWN_SHUTDOWN);
 
   return error;
 }

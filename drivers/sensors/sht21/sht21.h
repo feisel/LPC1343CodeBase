@@ -5,7 +5,7 @@
 #include "core/i2c/i2c.h"
 
 
-#define SHT21_ADDRESS (0x50) // 010 1000 shifted left 1 bit = 0x90
+#define SHT21_ADDRESS (0x40) // 010 1000 shifted left 1 bit = 0x90
 #define SHT21_READBIT (0x01)
 #define SHT21_WRITEBIT (0x00)
 

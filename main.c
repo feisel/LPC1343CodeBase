@@ -101,16 +101,18 @@ systemInit();
   //CPU Init
  // cpuInit();
 // systemInit();
-  systickInit(10);
+
 
   //Declare Vars
   uint32_t pmuRegVal;
  
 
-  systickDelay(20);
+  systickDelay(5000);
   //Geräte initieren
   InitRFM12();
-  yht371Init();
+ // yht371Init();
+
+   lm75bInit();
 
 
   uint32_t temp;
@@ -136,12 +138,18 @@ systemInit();
     char Buffer[20];
    
  //Feuchtesensor neu messen
-    hyt371DoMR();
+    //hyt371DoMR();
     systickDelay(20);
-    hyt371bRead(&hum,&temp);
+  //  hyt371bRead(&hum,&temp);
+
+lm75bError_e d;
+   d = lm75bGetTemperature(&temp);
+
+  temp *= 125;
+  temp=temp*0.001;
 
     //Feuchtigkeit umverpacken und senden
-    itoa( hum, Buffer, 10 );
+    //itoa( hum, Buffer, 10 );
       //Daten versenden
     //rf12_txdata(Buffer,5);
 
@@ -151,10 +159,10 @@ systemInit();
       
        status = rf12_trans(0x0);	
 
-
-
+ RF12_Packet_T packet;
+/*
        //Packet für Feuchte bauen und senden
-       RF12_Packet_T packet;
+      
        packet.DeviceId=1;
        packet.PacketId=1;
        packet.CRC[0]=1;
@@ -163,6 +171,7 @@ systemInit();
        packet.DataLength=1;
        packet.Data[0]=hum;
        rf12_SendPacket(packet);
+       */
 
        
        //Packet für Temperatue bauen und senden
@@ -183,10 +192,10 @@ systemInit();
         rf12_trans(0x8201);
 
 
-     //  systickDelay(200);
+      systickDelay(5000);        
      //sleep aktiv setzen
-      pmuInit();
-      pmuDeepSleep(pmuRegVal, 10);
+    //  pmuInit();
+    //  pmuDeepSleep(pmuRegVal, 10);
     }
     return 0;
 }
